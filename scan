@@ -1,0 +1,18 @@
+#!/bin/sh
+
+device="wlan0"
+if [ -n "$PATH_INFO" ]; then
+    device="${PATH_INFO##*/}"
+fi
+
+echo "Content-Type: application/json"
+echo ""
+
+scan=$(ubus call iwinfo scan "{\"device\":\"$device\"}" 2>&1)
+if [ $? -ne 0 ]; then
+    echo "{\"error\":\"$(echo "$scan" | sed 's/"/\\"/g')\"}"
+    exit 1
+fi
+
+echo "$scan"
+exit 0
