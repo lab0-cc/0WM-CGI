@@ -5,6 +5,7 @@ if [ -n "$PATH_INFO" ]; then
     device="${PATH_INFO##*/}"
 fi
 
+echo "Access-Control-Allow-Origin: *"
 echo "Content-Type: application/json"
 echo ""
 

@@ -1,5 +1,6 @@
 #!/bin/sh
 
+echo "Access-Control-Allow-Origin: *"
 echo "Content-Type: application/json"
 echo ""
 ubus call system board
