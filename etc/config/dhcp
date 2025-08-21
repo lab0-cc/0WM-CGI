@@ -1,0 +1,8 @@
+config dhcp 'lan'
+	option interface 'lan'
+	option ra 'server'
+	list ra_flags 'none'
+	option ra_lifetime '0'
+	option dns_service '0'
+	option dynamicdhcp '0'
+	option ignore '1'
