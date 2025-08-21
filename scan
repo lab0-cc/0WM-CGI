@@ -9,7 +9,7 @@ echo "Access-Control-Allow-Origin: *"
 echo "Content-Type: application/json"
 echo ""
 
-scan=$(ubus call iwinfo scan "{\"device\":\"$device\"}" 2>&1)
+scan=$(ubus call iwinfo scan "{\"device\":\"$(echo "$device" | sed 's/["\\]//g')\"}" 2>&1)
 if [ $? -ne 0 ]; then
     echo "{\"error\":\"$(echo "$scan" | sed 's/"/\\"/g')\"}"
     exit 1
